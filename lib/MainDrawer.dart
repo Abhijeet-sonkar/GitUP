@@ -4,6 +4,7 @@ import 'package:prototype2/loginScreen.dart';
 import 'package:prototype2/main.dart';
 import './widgets/option_widgets.dart';
 import 'loginScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainDrawer extends StatelessWidget {
   final String userName;
@@ -48,16 +49,21 @@ class MainDrawer extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     children: [
-                      OptionWidget("Contribution",Icons.rate_review, (){
-                          Navigator.pushReplacement(
+                      OptionWidget("Contribution", Icons.rate_review, () {
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyApp(userName)),
                         );
-                          
                       }),
-                      
                       OptionWidget("Logout", Icons.navigate_before, () {
+                        storeUserName() async {
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.setString('userName', 'logOut');
+                        }
+
+                        storeUserName();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

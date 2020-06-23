@@ -1,5 +1,5 @@
 class UserName{
 
-  String userName;
+  var userName;
   UserName(this.userName);
 }
