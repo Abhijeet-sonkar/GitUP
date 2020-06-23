@@ -21,31 +21,44 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   @override
- // String stringValue;
- String a;
+  // String stringValue;
+  Future<String> a;
   void initState() {
-   getUserName() async {
-      
+    getUserName() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      setState(() {
-            a =  prefs.getString('userName') ??'logOut';
-      });
-  
-      
-      
-      print('value of $a');
-  
+      String value = prefs.getString('userName') ?? 'logOut';
+      return value;
     }
-    getUserName();
+
+    a= getUserName();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-     
     print(a);
-    return a=='logOut' ? LogInScreen() : MyApp(a);
+    return FutureBuilder(
+      future:a,
+      builder:( context,snapshot){
+
+        if(snapshot.connectionState==ConnectionState.done)
+        {
+          if(snapshot.data=='logOut')
+          {
+            return LogInScreen();
+          }
+          else
+          {
+            return MyApp(snapshot.data);
+          }
+        }
+        if(!snapshot.hasData){
+          return CircularProgressIndicator();
+        }
+
+      }
+      );
   }
 }
 
