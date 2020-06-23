@@ -8,11 +8,18 @@ import 'model/userName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'event/UserName_Event.dart';
 import 'bloc/userName_bloc.dart';
+import 'task.dart';
+import 'bloc/TaskBloc.dart';
+import 'event/todoEvent.dart';
 
-void main() => runApp(MaterialApp(
-    title: "Github with GraphQL",
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(body: MainScreen())));
+
+void main() => runApp(BlocProvider<TaskBloc>(
+      create: (context) => TaskBloc(),
+      child: MaterialApp(
+          title: "Github with GraphQL",
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(body: MainScreen())),
+    ));
 
 class MainScreen extends StatefulWidget {
   @override
@@ -22,6 +29,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   // String stringValue;
+
   Future<String> a;
   void initState() {
     getUserName() async {
@@ -30,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
       return value;
     }
 
-    a= getUserName();
+    a = getUserName();
 
     super.initState();
   }
@@ -39,26 +47,18 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     print(a);
     return FutureBuilder(
-      future:a,
-      builder:( context,snapshot){
-
-        if(snapshot.connectionState==ConnectionState.done)
-        {
-          if(snapshot.data=='logOut')
-          {
-            return LogInScreen();
+        future: a,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == 'logOut') {
+              return LogInScreen();
+            } else {
+              return MyApp(snapshot.data);
+            }
+          } else {
+            return CircularProgressIndicator();
           }
-          else
-          {
-            return MyApp(snapshot.data);
-          }
-        }
-        if(!snapshot.hasData){
-          return CircularProgressIndicator();
-        }
-
-      }
-      );
+        });
   }
 }
 

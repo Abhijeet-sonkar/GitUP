@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'loginScreen.dart';
 import 'MainDrawer.dart';
+
 class Contributions extends StatefulWidget {
   final data;
   Contributions(this.data);
@@ -11,9 +12,7 @@ class Contributions extends StatefulWidget {
 }
 
 class _ContributionsState extends State<Contributions> {
-
   Function progress = (rankCode, rank) {
-    
     for (int i = 0; i < rankCode.length; i++) {
       if (rank < rankCode[i]) return i;
     }
@@ -35,21 +34,23 @@ class _ContributionsState extends State<Contributions> {
         ['issueContributions']['totalCount'];
     repoContribution =
         widget.data['contributionsCollection']['totalRepositoryContributions'];
-    rankCode = [200, 400, 600, 800, 1000, 1200,8000];
+    rankCode = [200, 400, 600, 800, 1000, 1200, 8000];
     pullRequests = widget.data['contributionsCollection']
         ['pullRequestContributions']['totalCount'];
     commits =
         widget.data['contributionsCollection']['totalCommitContributions'];
     totalContributions = widget.data['contributionsCollection']
         ['contributionCalendar']['totalContributions'];
-    rank = totalContributions>1200?6:progress(rankCode, totalContributions);
+    rank =
+        totalContributions > 1200 ? 6 : progress(rankCode, totalContributions);
     repoCount = widget.data["repositories"]["totalCount"];
     totalYears = widget.data['contributionsCollection']['contributionYears'];
     print(totalYears[0]);
   }
-  
+
   Widget build(BuildContext context) {
-    var heightSize =MediaQuery.of(context).size.height- AppBar().preferredSize.height;
+    var heightSize =
+        MediaQuery.of(context).size.height - AppBar().preferredSize.height;
 
     return Container(
       height: heightSize,
@@ -60,7 +61,7 @@ class _ContributionsState extends State<Contributions> {
           ClipPath(
             clipper: CustomClipPath(),
             child: Container(
-              height: heightSize* 0.40,
+              height: heightSize * 0.40,
               width: MediaQuery.of(context).size.width,
               // color: Colors.blue,
               decoration: new BoxDecoration(
@@ -80,12 +81,9 @@ class _ContributionsState extends State<Contributions> {
           ),
           Column(
             children: [
-              
-              
-              
               Center(
                 child: Container(
-                  height: heightSize*0.95,
+                  height: heightSize * 0.95,
                   width: MediaQuery.of(context).size.width * 0.9,
                   color: Colors.transparent,
                   child: SingleChildScrollView(
@@ -97,14 +95,13 @@ class _ContributionsState extends State<Contributions> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Container(
-                              height: heightSize* 0.3,
+                              height: heightSize * 0.3,
                               width: MediaQuery.of(context).size.width * 0.9,
                               color: Colors.purple[50],
                               child: Column(
                                 children: [
                                   Container(
-                                    height:heightSize *
-                                        0.25,
+                                    height: heightSize * 0.25,
                                     width:
                                         MediaQuery.of(context).size.width * 0.9,
                                     child: Column(
@@ -118,9 +115,7 @@ class _ContributionsState extends State<Contributions> {
                                                 child: Padding(
                                                   padding: EdgeInsets.all(20),
                                                   child: ClipOval(
-
                                                     child: Image.network(
-                                                      
                                                       widget.data["avatarUrl"],
                                                       filterQuality:
                                                           FilterQuality.high,
@@ -156,25 +151,21 @@ class _ContributionsState extends State<Contributions> {
                                                                               20),
                                                                 )),
                                                             Align(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topLeft,
-                                                              child: 
-                                                              rank>1200?
-                                                              Text(
-                                                                  'Legend',
-                                                                  style: GoogleFonts
-                                                                      .carterOne(
-                                                                          fontSize:
-                                                                              12)):
-                                                                Text(
-                                                                  'Rookie',
-                                                                  style: GoogleFonts
-                                                                      .carterOne(
-                                                                          fontSize:
-                                                                              12))            
-
-                                                            ),
+                                                                alignment:
+                                                                    Alignment
+                                                                        .topLeft,
+                                                                child: rank >
+                                                                        1200
+                                                                    ? Text(
+                                                                        'Legend',
+                                                                        style: GoogleFonts.carterOne(
+                                                                            fontSize:
+                                                                                12))
+                                                                    : Text(
+                                                                        'Rookie',
+                                                                        style: GoogleFonts.carterOne(
+                                                                            fontSize:
+                                                                                12))),
                                                             SizedBox(
                                                               height: 20,
                                                             ),
@@ -219,8 +210,8 @@ class _ContributionsState extends State<Contributions> {
                                               child: Row(
                                                 children: [
                                                   Text('Rating: ',
-                                                      style: GoogleFonts
-                                                          .autourOne(
+                                                      style:
+                                                          GoogleFonts.autourOne(
                                                               fontSize: 18)),
                                                   ...star(rank),
                                                 ],
@@ -241,8 +232,8 @@ class _ContributionsState extends State<Contributions> {
                                       alignment: Alignment.topRight,
                                       child: Text(
                                         '($totalContributions/${rankCode[rank]})',
-                                        style: GoogleFonts.autourOne(
-                                            fontSize: 14),
+                                        style:
+                                            GoogleFonts.autourOne(fontSize: 14),
                                       ))
                                 ],
                               ),
@@ -265,7 +256,7 @@ class _ContributionsState extends State<Contributions> {
                         //  SingleChildScrollView(child: YearsContributed(totalYears)),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                                                  child: Row(
+                          child: Row(
                             children: [
                               ...years(totalYears, context),
                             ],
@@ -286,7 +277,7 @@ class _ContributionsState extends State<Contributions> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Container(
-                              height:heightSize* 0.35,
+                              height: heightSize * 0.35,
                               width: MediaQuery.of(context).size.width * 0.9,
                               color: Colors.purple[50],
                               child: Padding(
@@ -478,12 +469,11 @@ List<Widget> years(year, context) {
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 10.0;
   @override
-   Path getClip(Size size) {
+  Path getClip(Size size) {
     Path path = Path();
     path.lineTo(0, size.height - 100);
     path.quadraticBezierTo(
-        size.width / 10, size.height, 
-  size.width, size.height - 10);
+        size.width / 10, size.height, size.width, size.height - 10);
     path.lineTo(size.width, 0);
     path.close();
 

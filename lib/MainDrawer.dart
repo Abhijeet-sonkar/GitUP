@@ -5,6 +5,7 @@ import 'package:prototype2/main.dart';
 import './widgets/option_widgets.dart';
 import 'loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'todoScreen.dart';
 
 class MainDrawer extends StatelessWidget {
   final String userName;
@@ -36,7 +37,7 @@ class MainDrawer extends StatelessWidget {
                     gradient: new LinearGradient(
                         colors: [
                       Colors.white,
-                      Colors.purple[900],
+                      Colors.purple[200],
                     ],
                         stops: [
                       0.0,
@@ -54,6 +55,13 @@ class MainDrawer extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyApp(userName)),
+                        );
+                      }),
+                       OptionWidget("To-Do", Icons.rate_review, () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ToDoMain(userName)),
                         );
                       }),
                       OptionWidget("Logout", Icons.navigate_before, () {
