@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:prototype2/loginScreen.dart';
-import 'package:prototype2/main.dart';
-import './widgets/option_widgets.dart';
+
 import 'loginScreen.dart';
+import 'package:prototype2/main.dart';
+import '../widgets/option_widgets.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'todoScreen.dart';
-import 'database/database_provider.dart';
+
 
 class MainDrawer extends StatelessWidget {
   final String userName;
@@ -51,7 +51,7 @@ class MainDrawer extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     children: [
-                      OptionWidget("Contribution", Icons.rate_review, () {
+                      OptionWidget("Contribution", Icons.redeem, () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

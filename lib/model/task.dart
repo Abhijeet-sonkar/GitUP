@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'database/database_provider.dart';
+import '../database/database_provider.dart';
 class Task {
    int id;
    String taskNAme;

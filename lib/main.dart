@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:prototype2/MainDrawer.dart';
-import 'contributionsScreen.dart';
-import 'loginScreen.dart';
+import 'Screen/MainDrawer.dart';
+import 'Screen/contributionsScreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'model/userName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'event/UserName_Event.dart';
-import 'bloc/userName_bloc.dart';
-import 'task.dart';
 import 'bloc/TaskBloc.dart';
-import 'event/todoEvent.dart';
-
+import 'Screen/loginScreen.dart';
 
 void main() => runApp(BlocProvider<TaskBloc>(
       create: (context) => TaskBloc(),

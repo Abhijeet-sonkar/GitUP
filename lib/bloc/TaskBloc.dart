@@ -1,4 +1,4 @@
-import '../task.dart';
+import 'package:prototype2/model/task.dart';
 import '../event/todoEvent.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

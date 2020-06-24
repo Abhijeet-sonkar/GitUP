@@ -1,4 +1,4 @@
-import '../task.dart';
+import 'package:prototype2/model/task.dart';
 
 enum EventType { add, delete ,show}
 

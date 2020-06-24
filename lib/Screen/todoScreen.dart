@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'widgets/newtask.dart';
+import 'package:prototype2/widgets/newtask.dart';
 import 'contributionsScreen.dart';
-import 'Screen/MainDrawer.dart';
+import 'MainDrawer.dart';
 
-import 'widgets/tasklist.dart';
+import '../widgets/tasklist.dart';
 
 class ToDoMain extends StatelessWidget {
   final String userName;
