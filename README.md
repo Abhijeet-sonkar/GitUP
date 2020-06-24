@@ -23,8 +23,7 @@ An app made with flutter to view your Github Contributions and add to-do's to ma
 
 Donwload the apk from
 
-
-https://github.com/Abhijeet-sonkar/GitUP/blob/master/apk/GitUP.apk
+https://github.com/Abhijeet-sonkar/GitUP/blob/master/apk/GitUp.apk
 
 
 ## API used
