@@ -110,7 +110,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           width: MediaQuery.of(context).size.width * 0.7,
                           child: TextField(
                             decoration: InputDecoration(
-                                hintText: 'Enter yout Github Username'),
+                                hintText: 'Enter your Github Username'),
                             controller: _userNameController,
                             onSubmitted: (_) => _submitData(),
                             // onChanged: (val) {
