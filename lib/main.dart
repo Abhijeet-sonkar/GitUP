@@ -5,13 +5,21 @@ import 'contributionsScreen.dart';
 import 'loginScreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'model/userName.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'event/UserName_Event.dart';
 import 'bloc/userName_bloc.dart';
+import 'task.dart';
+import 'bloc/TaskBloc.dart';
+import 'event/todoEvent.dart';
 
-void main() => runApp(MaterialApp(
-    title: "Github with GraphQL",
-    debugShowCheckedModeBanner: false,
-    home: Scaffold(body: MainScreen())));
+
+void main() => runApp(BlocProvider<TaskBloc>(
+      create: (context) => TaskBloc(),
+      child: MaterialApp(
+          title: "Github with GraphQL",
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(body: MainScreen())),
+    ));
 
 class MainScreen extends StatefulWidget {
   @override
@@ -20,22 +28,37 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   @override
+  // String stringValue;
+
+  Future<String> a;
   void initState() {
-    //  BlocProvider.of<UserNameBloc>(context).add(UserNameEvent.show());
+    getUserName() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String value = prefs.getString('userName') ?? 'logOut';
+      return value;
+    }
+
+    a = getUserName();
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (_) => UserNameBloc(),
-        child: BlocBuilder<UserNameBloc, UserName>(
-          builder: (_, userName) {
-            return userName.userName == 'logOut'
-                ? LogInScreen()
-                : MyApp(userName.userName);
-          },
-        ));
+    print(a);
+    return FutureBuilder(
+        future: a,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.data == 'logOut') {
+              return LogInScreen();
+            } else {
+              return MyApp(snapshot.data);
+            }
+          } else {
+            return CircularProgressIndicator();
+          }
+        });
   }
 }
 
@@ -116,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
       """;
 
     return Scaffold(
-    //  / drawer: MainDrawer(),
+      //  / drawer: MainDrawer(),
       body: Query(
         options: QueryOptions(
           documentNode: gql(readRepositories),
@@ -151,11 +174,11 @@ class _MyHomePageState extends State<MyHomePage> {
           return Contributions(userDetails);
         },
       ),
-       appBar: AppBar(
-         backgroundColor: Colors.deepPurple[900],
-         elevation: 0.0,
-  ),
-   drawer: MainDrawer(widget.userName),
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple[900],
+        elevation: 0.0,
+      ),
+      drawer: MainDrawer(widget.userName),
     );
   }
 }

@@ -5,6 +5,7 @@ import 'model/userName.dart';
 import 'event/UserName_Event.dart';
 import 'bloc/userName_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LogInScreen extends StatefulWidget {
   @override
@@ -23,9 +24,14 @@ class _LogInScreenState extends State<LogInScreen> {
     
    // BlocProvider.of<UserNameBloc>(context).add(UserNameEvent.login(userNameAlias));
     print('two');
+     storeUserName() async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.setString('userName',userName);
+          }
+      storeUserName();    
     Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => MyApp(userName)),
+          MaterialPageRoute(builder: (context) => MainScreen()),
         );
     print('three');
   }
@@ -106,7 +112,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           width: MediaQuery.of(context).size.width * 0.7,
                           child: TextField(
                             decoration: InputDecoration(
-                                labelText: 'Enter yout Github Username'),
+                                hintText: 'Enter yout Github Username'),
                             controller: _userNameController,
                             onSubmitted: (_) => _submitData(),
                             // onChanged: (val) {

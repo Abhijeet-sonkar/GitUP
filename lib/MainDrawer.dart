@@ -4,6 +4,9 @@ import 'package:prototype2/loginScreen.dart';
 import 'package:prototype2/main.dart';
 import './widgets/option_widgets.dart';
 import 'loginScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'todoScreen.dart';
+import 'database/database_provider.dart';
 
 class MainDrawer extends StatelessWidget {
   final String userName;
@@ -35,7 +38,7 @@ class MainDrawer extends StatelessWidget {
                     gradient: new LinearGradient(
                         colors: [
                       Colors.white,
-                      Colors.purple[900],
+                      Colors.purple[200],
                     ],
                         stops: [
                       0.0,
@@ -48,16 +51,31 @@ class MainDrawer extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     children: [
-                      OptionWidget("Contribution",Icons.rate_review, (){
-                          Navigator.pushReplacement(
+                      OptionWidget("Contribution", Icons.rate_review, () {
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyApp(userName)),
                         );
-                          
                       }),
-                      
+                       OptionWidget("To-Do", Icons.rate_review, () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ToDoMain(userName)),
+                        );
+                      }),
                       OptionWidget("Logout", Icons.navigate_before, () {
+                        storeUserName() async {
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          prefs.setString('userName', 'logOut');
+                        }
+
+                        storeUserName();
+                        
+                        print('this is also executing');
+            
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
