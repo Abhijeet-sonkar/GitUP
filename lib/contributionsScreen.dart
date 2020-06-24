@@ -27,6 +27,7 @@ class _ContributionsState extends State<Contributions> {
   var pullRequests;
   var issueContribution;
   var repoContribution;
+  List<String> status=['Rookie','Intermediate','Skilled','Pro','Expert','Advanced ','Legend'];
   @override
   void initState() {
     super.initState();
@@ -154,27 +155,20 @@ class _ContributionsState extends State<Contributions> {
                                                                 alignment:
                                                                     Alignment
                                                                         .topLeft,
-                                                                child: rank >
-                                                                        1200
-                                                                    ? Text(
-                                                                        'Legend',
-                                                                        style: GoogleFonts.carterOne(
-                                                                            fontSize:
-                                                                                12))
-                                                                    : Text(
-                                                                        'Rookie',
+                                                                child:  Text(
+                                                                        '${status[rank]}',
                                                                         style: GoogleFonts.carterOne(
                                                                             fontSize:
                                                                                 12))),
                                                             SizedBox(
-                                                              height: 20,
+                                                              height: 10,
                                                             ),
                                                             Align(
                                                                 alignment:
                                                                     Alignment
                                                                         .topLeft,
                                                                 child: Text(
-                                                                  'Total Contribution: $totalContributions',
+                                                                  'Last Year Contribution: $totalContributions',
                                                                   style: GoogleFonts
                                                                       .autourOne(
                                                                           fontSize:
@@ -425,7 +419,7 @@ class ProgressBar extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.8 * (green / grey),
+            width: MediaQuery.of(context).size.width * 0.8 * (green / (grey==0?1:grey)),
             height: MediaQuery.of(context).size.height * 0.01,
             color: Colors.green,
           ),

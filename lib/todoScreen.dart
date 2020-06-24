@@ -92,13 +92,14 @@ class ToDoMain extends StatelessWidget {
                       ),
                     ),
                   ),
+                  
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 30),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         'To-Do',
-                        style: GoogleFonts.autourOne(fontSize: 20),
+                        style: GoogleFonts.carterOne(fontSize: 30),
                       ),
                     ),
                   ),

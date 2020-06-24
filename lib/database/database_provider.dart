@@ -81,7 +81,17 @@ class DatabaseProvider {
       where: "id = ?",
       whereArgs: [id],
     );
+
+   
   }
+   Future<bool> deleteAll() async{
+        String dbPath = await getDatabasesPath();
+        dbPath=join(dbPath, 'taskDB.db');
+      await deleteDatabase(dbPath);
+
+      return true;
+
+    }
 
  
 }

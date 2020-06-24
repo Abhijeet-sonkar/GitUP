@@ -71,7 +71,7 @@ class _TaskListState extends State<TaskList> {
                           child: FittedBox(
                             child: Text(
                               '#${index + 1}',
-                              style: TextStyle(color: Colors.black),
+                              style: GoogleFonts.autourOne()
                             ),
                           ),
                         ),

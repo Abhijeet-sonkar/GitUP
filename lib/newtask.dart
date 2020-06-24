@@ -37,7 +37,9 @@ class _NewTAskState extends State<NewTAsk> {
   }
 
   void _presentDatePicker() {
+    
     showDatePicker(
+      
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2019),
@@ -85,7 +87,7 @@ class _NewTAskState extends State<NewTAsk> {
                     child: Text(
                       'Add Due Date',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.blue),
+                          fontWeight: FontWeight.bold, color: Colors.purple),
                     ),
                     onPressed: _presentDatePicker,
                   ),
@@ -94,7 +96,7 @@ class _NewTAskState extends State<NewTAsk> {
             ),
             RaisedButton(
               child: Text('Add New Task'),
-              color: Colors.blue,
+              color: Colors.purple,
               onPressed: _submitData,
             ),
           ],

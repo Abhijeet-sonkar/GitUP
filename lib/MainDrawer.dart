@@ -6,6 +6,7 @@ import './widgets/option_widgets.dart';
 import 'loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'todoScreen.dart';
+import 'database/database_provider.dart';
 
 class MainDrawer extends StatelessWidget {
   final String userName;
@@ -72,6 +73,9 @@ class MainDrawer extends StatelessWidget {
                         }
 
                         storeUserName();
+                        
+                        print('this is also executing');
+            
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
