@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'loginScreen.dart';
 import 'package:prototype2/main.dart';
 import '../widgets/option_widgets.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'todoScreen.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'widgets/newtask.dart';
-import 'contributionsScreen.dart';
+import 'Screen/contributionsScreen.dart';
 import 'Screen/MainDrawer.dart';
 
 import 'widgets/tasklist.dart';
