@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'event/todoEvent.dart';
-import 'bloc/TaskBloc.dart';
+import '../event/todoEvent.dart';
+import '../bloc/TaskBloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'task.dart';
-import 'database/database_provider.dart';
+import '../model/task.dart';
+import '../database/database_provider.dart';
 class NewTAsk extends StatefulWidget {
 
 

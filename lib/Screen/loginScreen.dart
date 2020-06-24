@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'main.dart';
-import 'model/userName.dart';
-import 'event/UserName_Event.dart';
-import 'bloc/userName_bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../main.dart';
+
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -20,7 +18,7 @@ class _LogInScreenState extends State<LogInScreen> {
     if (userName.isEmpty) return;
    
    print('one');
-    UserName userNameAlias=UserName(userName);
+    
     
    // BlocProvider.of<UserNameBloc>(context).add(UserNameEvent.login(userNameAlias));
     print('two');

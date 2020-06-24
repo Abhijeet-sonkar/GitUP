@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'event/todoEvent.dart';
-import 'task.dart';
-import 'bloc/TaskBloc.dart';
+import '../event/todoEvent.dart';
+import '../model/task.dart';
+import '../bloc/TaskBloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'database/database_provider.dart';
+import '../database/database_provider.dart';
 
 class TaskList extends StatefulWidget {
   @override

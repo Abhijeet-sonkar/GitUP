@@ -2,7 +2,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
-import 'package:prototype2/task.dart';
+import '../model/task.dart';
 
 class DatabaseProvider {
   static const String TABLE_TASK = "task";
