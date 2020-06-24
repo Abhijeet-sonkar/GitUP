@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/TaskBloc.dart';
 import 'Screen/loginScreen.dart';
+import 'access_token.dart';
 
 void main() => runApp(BlocProvider<TaskBloc>(
       create: (context) => TaskBloc(),
@@ -65,8 +66,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String accessToken = '9e96f88ea4969fdf80f27bc0d66f3071e92149c4';
-
+ 
   @override
   Widget build(BuildContext context) {
     final HttpLink httpLink = HttpLink(

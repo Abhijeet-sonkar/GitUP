@@ -16,6 +16,11 @@ An app made with flutter to view your Github Contributions and add to-do's to ma
 | google_fonts | ^ 1.1.0  |
 |shared_preferences |  ^ 0.5.7+3  |
 |  path|^1.6.4  |
+|flutter_bloc | ^ 4.0.1|
+|flutter_launcher_icons| ^  0.7.2|
+
+##Apk
+
 
 ## API used
 https://api.github.com/graphql
